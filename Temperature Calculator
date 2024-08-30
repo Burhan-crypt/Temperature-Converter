@@ -1,0 +1,47 @@
+ <?php
+                function contemp($temperature, $from_unit, $to_unit){
+                    if ($from_unit == $to_unit) {
+                        return $temperature;
+                    }
+                    switch ($from_unit) {
+                        case 'celsius':
+                           if ($to_unit == "fahrenheit") {
+                            return ($temperature * 9/5) + 32;
+                        }
+                            elseif ($to_unit == "kelvin") {
+                                return $temperature + 273.15;
+                            }
+                            break;
+                        case 'fahrenheit':
+                            if ($to_unit == "celsius") {
+                                return ($temperature - 32) * 5/9;
+                            } elseif ($to_unit == "kelvin") {
+                                return ($temperature - 32) * 5/9 + 273.15; 
+                            }
+                            break;
+                        case 'kelvin':
+                            if ($to_unit == "celsius") {
+                                return $temperature - 273.15;
+                            } elseif ($to_unit == "fahrenheit") {
+                            return ($temperature -273.15) * 9/5 + 32;
+                            }
+                            break;
+                    }
+                    return null;
+                }
+
+                if (isset($_POST["convert"])) {
+                    $temperature = $_POST["temperature"];
+                    $from_unit = $_POST["from_unit"];
+                    $to_unit = $_POST["to_unit"];
+                    
+                    $converted_temperature = contemp($temperature, $from_unit, $to_unit);
+
+                    if ($converted_temperature !== null) {
+                        echo "Result: " . round($converted_temperature, 2) . " $to_unit";
+                    } 
+                    else {
+                       echo "Invalid Conversion!";
+                    }
+                }
+            ?>
