@@ -1,4 +1,73 @@
- <?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            padding-top: 50px;
+            margin: 20px auto;
+        }
+
+        .converter {
+            max-width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(223, 230, 232, 0.513);
+        }
+        input[type="number" ], select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0263cb;
+            opacity: 0.9;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Temperture Converter</h1>
+    <div class="converter">
+        <form method="POST" action="">
+            <input type="number" name="temperature" placeholder="Enter Temperature" required>
+            <select name="from_unit">
+                <option value="celsius">Celsius</option>
+                <option value="kelvin">Kelvin</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+
+            <select name="to_unit">
+                <option value="celsius">Celsius</option>
+                <option value="kelvin">Kelvin</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+            <input type="submit" name="convert" value="Convert">
+        </form>
+        <div class="result">
+            <?php
                 function contemp($temperature, $from_unit, $to_unit){
                     if ($from_unit == $to_unit) {
                         return $temperature;
@@ -45,3 +114,7 @@
                     }
                 }
             ?>
+        </div>
+    </div>
+</body>
+</html>
